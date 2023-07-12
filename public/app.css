@@ -1,0 +1,17 @@
+body {
+    max-width: 600px;
+    margin: auto;
+}
+
+article {
+    margin-bottom: 3rem;
+}
+
+article + article {
+    padding-top: 3rem;
+    border-top: 1px solid #c5c5c5;
+}
+
+article p {
+    line-height: 1.5;
+}
