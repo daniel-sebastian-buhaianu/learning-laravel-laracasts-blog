@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -36,6 +37,7 @@ class DatabaseSeeder extends Seeder
 
         Post::create([
             'title' => 'My first post',
+            'slug' => 'my-first-post',
             'body' => '
 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae neque elementum, rhoncus libero ac, ullamcorper urna. Nulla eget mi consequat, elementum justo eu, suscipit ante. Vivamus varius sem id lobortis commodo. Quisque eget est et ipsum pulvinar ultrices at ac massa. Duis ante risus, auctor eget magna ut, tristique sollicitudin tellus. Curabitur ac massa aliquam quam semper fringilla. Sed sit amet elementum ex.
@@ -51,6 +53,7 @@ class DatabaseSeeder extends Seeder
 
         Post::create([
             'title' => 'My second post',
+            'slug' => 'my-second-post',
             'body' => '
 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae neque elementum, rhoncus libero ac, ullamcorper urna. Nulla eget mi consequat, elementum justo eu, suscipit ante. Vivamus varius sem id lobortis commodo. Quisque eget est et ipsum pulvinar ultrices at ac massa. Duis ante risus, auctor eget magna ut, tristique sollicitudin tellus. Curabitur ac massa aliquam quam semper fringilla. Sed sit amet elementum ex.
@@ -66,6 +69,7 @@ class DatabaseSeeder extends Seeder
 
         Post::create([
             'title' => 'My third post',
+            'slug' => 'my-third-post',
             'body' => '
 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae neque elementum, rhoncus libero ac, ullamcorper urna. Nulla eget mi consequat, elementum justo eu, suscipit ante. Vivamus varius sem id lobortis commodo. Quisque eget est et ipsum pulvinar ultrices at ac massa. Duis ante risus, auctor eget magna ut, tristique sollicitudin tellus. Curabitur ac massa aliquam quam semper fringilla. Sed sit amet elementum ex.
@@ -77,6 +81,18 @@ class DatabaseSeeder extends Seeder
             Vestibulum et bibendum leo, sit amet rutrum quam. Nullam cursus tincidunt egestas. Donec ligula arcu, posuere ac malesuada eu, blandit eu orci. ',
             'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             
+        ]);
+
+        Category::create([
+            'name' => 'Personal'
+        ]);
+
+        Category::create([
+            'name' => 'Work'
+        ]);
+
+        Category::create([
+            'name' => 'Hobbies'
         ]);
     }
 }
