@@ -15,27 +15,31 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        User::truncate();
+        Category::truncate();
+        Post::truncate();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $user1 = User::factory()->create();
+        $user2 = User::factory()->create();
 
-        User::create([
-            'username' => 'admin',
-            'email' => 'admin@blog.com',
-            'password' => 'admin',
-            'is_admin' => true
+        $personal = Category::create([
+            'name' => 'Personal',
+            'slug' => 'personal',
         ]);
 
-        User::create([
-            'username' => 'user',
-            'email' => 'user@blog.com',
-            'password' => 'user',
+        $work = Category::create([
+            'name' => 'Work',
+            'slug' => 'work',
+        ]);
+
+        $hobbies = Category::create([
+            'name' => 'Hobbies',
+            'slug' => 'hobbies',
         ]);
 
         Post::create([
+            'user_id' => $user1->id,
+            'category_id' => $personal->id,
             'title' => 'My first post',
             'slug' => 'my-first-post',
             'body' => '
@@ -52,6 +56,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Post::create([
+            'user_id' => $user2->id,
+            'category_id' => $work->id,
             'title' => 'My second post',
             'slug' => 'my-second-post',
             'body' => '
@@ -68,6 +74,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Post::create([
+            'user_id' => $user1->id,
+            'category_id' => $hobbies->id,
             'title' => 'My third post',
             'slug' => 'my-third-post',
             'body' => '
@@ -81,18 +89,6 @@ class DatabaseSeeder extends Seeder
             Vestibulum et bibendum leo, sit amet rutrum quam. Nullam cursus tincidunt egestas. Donec ligula arcu, posuere ac malesuada eu, blandit eu orci. ',
             'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             
-        ]);
-
-        Category::create([
-            'name' => 'Personal'
-        ]);
-
-        Category::create([
-            'name' => 'Work'
-        ]);
-
-        Category::create([
-            'name' => 'Hobbies'
         ]);
     }
 }
