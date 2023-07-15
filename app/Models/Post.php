@@ -23,6 +23,13 @@ class Post extends Model
                 ->where('title', 'like', '%' . $searchQuery . '%')
                 ->orWhere('body', 'like', '%' . $searchQuery . '%');
         }
+
+        $category = $filters['category'] ?? false;
+
+        if ($category)
+        {
+            $query->whereHas('category', fn ($query) => $query->where('slug', $category));
+        }
     }
 
     public function category()
